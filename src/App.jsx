@@ -6,7 +6,7 @@ import * as Store from "./stores";
 
 export const Context = createContext({});
 function App() {
-  const [state, dispatch] = useReducer(Store.HandleState, { count: 99 });
+  const [state, dispatch] = useReducer(Store.HandleState, { count: 0 });
   return (
     <Context.Provider value={{ state, dispatch }}>
       <RouterProvider router={Routes.MainRoute} />

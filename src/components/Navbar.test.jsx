@@ -1,4 +1,4 @@
-import { act, render, screen, waitFor } from "@testing-library/react";
+import { act, cleanup, render, screen, waitFor } from "@testing-library/react";
 import App from "../App";
 import userEvent from "@testing-library/user-event";
 
@@ -36,13 +36,49 @@ describe("element", () => {
 });
 
 describe("navigation", () => {
-  test("should url have '/' when user click 'logo' menu", async () => {
+  test("Should url have '/logo' when user click 'logo' menu", async () => {
     render(<App />);
     act(() => {
       userEvent.click(screen.getByText(/Logo/));
     });
     await waitFor(() => {
-      expect(window.location.pathname).toBe("/Logo");
+      expect(window.location.pathname).toBe("/");
+    });
+  });
+  test("Should url have '/home' when user click 'home' menu", async () => {
+    render(<App />);
+    act(() => {
+      userEvent.click(screen.getByText(/home/));
+    });
+    await waitFor(() => {
+      expect(window.location.pathname).toBe("/");
+    });
+  });
+  test("Should url have '/about' when user click 'about' menu", async () => {
+    render(<App />);
+    act(() => {
+      userEvent.click(screen.getByText(/about/));
+    });
+    await waitFor(() => {
+      expect(window.location.pathname).toBe("/about");
+    });
+  });
+  test("Should url have '/login' when user click 'login' menu", async () => {
+    render(<App />);
+    act(() => {
+      userEvent.click(screen.getByText(/login/));
+    });
+    await waitFor(() => {
+      expect(window.location.pathname).toBe("/login");
+    });
+  });
+  test("Should url have '/logout' when user click 'logout' menu", async () => {
+    render(<App />);
+    act(() => {
+      userEvent.click(screen.getByText(/logout/));
+    });
+    await waitFor(() => {
+      expect(window.location.pathname).toBe("/logout");
     });
   });
 });

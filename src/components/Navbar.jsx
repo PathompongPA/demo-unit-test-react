@@ -1,11 +1,15 @@
+import "./Navbar.css";
 import { Link } from "react-router-dom";
 
 export default function Navbar() {
   const arrayMenu = ["Logo", "home", "about", "login", "logout"];
   const menu = arrayMenu.map((prop, index) => {
     return (
-      <li key={"li-menu-Navbar-" + index}>
-        <Link to={prop} key={"a-menu-Navbar" + index}>
+      <li className="title" key={"li-menu-Navbar-" + index}>
+        <Link
+          to={prop === "Logo" || prop === "home" ? "" : prop}
+          key={"a-menu-Navbar" + index}
+        >
           {prop}
         </Link>
       </li>
@@ -13,8 +17,10 @@ export default function Navbar() {
   });
 
   return (
-    <div>
-      <ul key={"ul-menu-Navbar"}>{menu}</ul>
+    <div id="box-navbar">
+      <ul id="box-title-navbar" key={"ul-menu-Navbar"}>
+        {menu}
+      </ul>
     </div>
   );
 }

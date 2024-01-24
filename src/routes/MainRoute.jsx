@@ -4,11 +4,18 @@ import * as Components from "../components";
 export const MainRoute = createBrowserRouter([
   {
     path: "/",
-    element: <Outlet />,
+    element: (
+      <div>
+        <Components.Navbar />
+        <Outlet />
+      </div>
+    ),
     children: [
-      { path: "", element: <Components.Navbar /> },
-      { path: "home", element: <div>home</div> },
-      { path: "about", element: <>about</> },
+      { path: "", element: <Components.Content1 /> },
+      { path: "Logo", element: <div>content1</div> },
+      { path: "about", element: <div>content2</div> },
+      { path: "login", element: <div>content3</div> },
+      { path: "logout", element: <div>content3</div> },
     ],
   },
   {
